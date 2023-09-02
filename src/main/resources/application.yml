@@ -1,0 +1,9 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql:localhost:3306/library-management?useSSL=false&useServerPrepStmts=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8 # ???? library-management
+        url: jdbc:mysql://localhost:3306/library-management # ???? library-management
+        username: root
+        password: 123456 # ?????
+server:
+    port: 9090
