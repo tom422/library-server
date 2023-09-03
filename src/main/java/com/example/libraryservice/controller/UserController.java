@@ -1,5 +1,7 @@
 package com.example.libraryservice.controller;
 
+import com.example.libraryservice.common.Result;
+import com.example.libraryservice.controller.request.UserPageRequest;
 import com.example.libraryservice.entity.User;
 
 import com.example.libraryservice.service.IUserService;
@@ -17,7 +19,14 @@ public class UserController {
     IUserService userService;
 
     @GetMapping("/list")
-    public List<User> listUsers(){
-        return userService.listUsers();
+    public Result list(){
+        List<User> users = userService.list();
+        return Result.success(users);
+    }
+
+    @GetMapping("/page")
+    public Result page(UserPageRequest userPageRequest){
+        Object users = userService.page(userPageRequest);
+        return Result.success(users);
     }
 }
