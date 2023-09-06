@@ -28,6 +28,10 @@ public class UserServer implements IUserService {
         return new PageInfo<>(users);
     }
 
+    @Override
+    public void save(User user) {
+        userMapper.save(user);
+    }
 
 
 }

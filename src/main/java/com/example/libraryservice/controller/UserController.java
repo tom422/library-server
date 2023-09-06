@@ -6,9 +6,7 @@ import com.example.libraryservice.entity.User;
 
 import com.example.libraryservice.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,6 +15,12 @@ import java.util.List;
 public class UserController {
     @Autowired
     IUserService userService;
+
+    @PostMapping("/save")
+    public Result save(@RequestBody User user){
+        userService.save(user);
+        return Result.success();
+    }
 
     @GetMapping("/list")
     public Result list(){
