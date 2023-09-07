@@ -5,7 +5,7 @@
 <mapper namespace="com.example.libraryservice.mapper.UserMapper">
     <insert id="save">
         insert into user( name, username, age, sex, phone, address)
-         values (#{name},#{username},#{age},#{sex},#{phone}，#{address})
+         values (#{name},#{username},#{age},#{sex},#{phone},#{address})
     </insert>
     <select id="list" resultType="com.example.libraryservice.entity.User">
         select * from user
