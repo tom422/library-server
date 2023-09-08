@@ -40,5 +40,15 @@ public class UserServer implements IUserService {
         userMapper.save(user);
     }
 
+    @Override
+    public User getById(Integer id) {
+        return userMapper.getById(id);
+    }
+
+    @Override
+    public void update(User user) {
+        userMapper.updateById(user);
+    }
+
 
 }
