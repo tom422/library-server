@@ -33,4 +33,16 @@ public class UserController {
         Object users = userService.page(userPageRequest);
         return Result.success(users);
     }
+
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id) {
+        User user = userService.getById(id);
+        return Result.success(user);
+    }
+
+    @PostMapping("/update")
+    public Result update(@RequestBody User user) {
+        userService.update(user);
+        return  Result.success();
+    }
 }
