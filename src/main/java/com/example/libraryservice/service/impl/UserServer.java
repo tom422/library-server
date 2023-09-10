@@ -35,7 +35,7 @@ public class UserServer implements IUserService {
     public void save(User user) {
         Date date = new Date();
         // 当作卡号来处理
-        user.setUsername(DateUtil.format(date, "yyyyMMdd") + IdUtil.fastSimpleUUID());
+        user.setUsername(DateUtil.format(date, "yyyyMMdd") + Math.abs(IdUtil.fastSimpleUUID().hashCode()));
         user.setUpdatetime(date);
         userMapper.save(user);
     }
@@ -47,7 +47,13 @@ public class UserServer implements IUserService {
 
     @Override
     public void update(User user) {
+        user.setUpdatetime(new Date());
         userMapper.updateById(user);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        userMapper.deleteById(id);
     }
 
 

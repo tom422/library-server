@@ -8,8 +8,11 @@
          values (#{name},#{username},#{age},#{sex},#{phone},#{address})
     </insert>
     <update id="updateById">
-        update user set name = #{name}, age = #{age}, sex = #{sex}, phone = #{phone}, address = #{address} where id = #{id}
+        update user set name = #{name}, age = #{age}, sex = #{sex}, phone = #{phone}, address = #{address}, updatetime=#{updatetime} where id = #{id}
     </update>
+    <delete id="deleteById">
+        delete  from user where id = #{id}
+    </delete>
     <select id="list" resultType="com.example.libraryservice.entity.User">
         select * from user
     </select>
@@ -24,7 +27,7 @@
                     and phone like concat('%',#{phone},'%')
                 </if>
             </where>
-            order by creatime desc
+            order by createtime desc
     </select>
     <select id="getById" resultType="com.example.libraryservice.entity.User">
         select * from user where id = #{id}

@@ -45,4 +45,10 @@ public class UserController {
         userService.update(user);
         return  Result.success();
     }
+
+    @GetMapping("/delete/{id}")
+    public Result delete(@PathVariable Integer id){
+        userService.deleteById(id);
+        return  Result.success();
+    }
 }
