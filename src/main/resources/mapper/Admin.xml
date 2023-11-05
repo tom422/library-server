@@ -35,4 +35,7 @@
     <select id="getById" resultType="com.example.libraryservice.entity.Admin">
         select * from admin where id = #{id}
     </select>
+    <select id="getByUsernameAndPassword"  resultType="com.example.libraryservice.entity.Admin">
+        select * from admin where username = #{username} and password = #{password}
+    </select>
 </mapper>

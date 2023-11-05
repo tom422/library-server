@@ -1,7 +1,9 @@
 package com.example.libraryservice.controller;
 
 import com.example.libraryservice.common.Result;
+import com.example.libraryservice.controller.dto.LoginDTO;
 import com.example.libraryservice.controller.request.AdminPageRequest;
+import com.example.libraryservice.controller.request.LoginRequest;
 import com.example.libraryservice.controller.request.UserPageRequest;
 import com.example.libraryservice.entity.Admin;
 import com.example.libraryservice.service.IAdminService;
@@ -16,6 +18,12 @@ import java.util.List;
 public class AdminController {
     @Autowired
     IAdminService adminService;
+
+    @PostMapping("/login")
+    public Result login(@RequestBody LoginRequest request){
+        LoginDTO loginDTO = adminService.login(request);
+        return Result.success(loginDTO);
+    }
 
     @PostMapping("/save")
     public Result save(@RequestBody Admin admin){

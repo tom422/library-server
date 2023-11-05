@@ -1,6 +1,7 @@
 package com.example.libraryservice.mapper;
 
 import com.example.libraryservice.controller.request.BaseRequest;
+import com.example.libraryservice.controller.request.LoginRequest;
 import com.example.libraryservice.controller.request.UserPageRequest;
 import com.example.libraryservice.entity.Admin;
 import com.example.libraryservice.entity.User;
@@ -24,4 +25,5 @@ public interface AdminMapper {
 
     void deleteById(Integer id);
 
+    Admin getByUsernameAndPassword(LoginRequest request);
 }
