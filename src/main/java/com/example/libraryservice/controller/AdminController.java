@@ -4,6 +4,7 @@ import com.example.libraryservice.common.Result;
 import com.example.libraryservice.controller.dto.LoginDTO;
 import com.example.libraryservice.controller.request.AdminPageRequest;
 import com.example.libraryservice.controller.request.LoginRequest;
+import com.example.libraryservice.controller.request.PasswordRequest;
 import com.example.libraryservice.controller.request.UserPageRequest;
 import com.example.libraryservice.entity.Admin;
 import com.example.libraryservice.service.IAdminService;
@@ -31,6 +32,12 @@ public class AdminController {
         return Result.success();
     }
 
+    @PutMapping("/password")
+    public Result password(@RequestBody PasswordRequest request){
+        adminService.changePass(request);
+        return Result.success();
+    }
+
     @GetMapping("/list")
     public Result list(){
         List<Admin> users = adminService.list();
@@ -49,7 +56,7 @@ public class AdminController {
         return Result.success(admin);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Admin admin) {
         adminService.update(admin);
         return  Result.success();

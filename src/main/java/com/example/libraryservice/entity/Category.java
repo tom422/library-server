@@ -3,18 +3,16 @@ package com.example.libraryservice.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
-public class Admin {
+public class Category {
     private Integer id;
-    private String username;
-    private String phone;
-    private String email;
-    private String password;
+    private String name;
+    private String remark;
+    private Integer pid;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
-    private Date createtime;
+    private LocalDate createtime;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
-    private Date updatetime;
-    private boolean status;
+    private LocalDate updatetime;
 }
