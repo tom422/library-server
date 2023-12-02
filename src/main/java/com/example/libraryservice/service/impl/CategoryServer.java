@@ -1,6 +1,7 @@
 package com.example.libraryservice.service.impl;
 
 import com.example.libraryservice.controller.request.AdminPageRequest;
+import com.example.libraryservice.controller.request.CategoryPageRequest;
 import com.example.libraryservice.entity.Category;
 import com.example.libraryservice.mapper.CategoryMapper;
 import com.example.libraryservice.service.ICategoryService;
@@ -10,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,10 +28,11 @@ public class CategoryServer implements ICategoryService {
     }
 
     @Override
-    public PageInfo<Category> page(AdminPageRequest adminPageRequest) {
-        PageHelper.startPage(adminPageRequest.getPageNum(),adminPageRequest.getPageSize());
-        List<Category> categories = categoryMapper.listByCondition(adminPageRequest);
-        return new PageInfo<Category>(categories);
+    public PageInfo<Category> page(CategoryPageRequest categoryPageRequest) {
+        PageHelper.startPage(categoryPageRequest.getPageNum(),categoryPageRequest.getPageSize());
+        // 自关联查询
+        List<Category> categories = categoryMapper.listByCondition(categoryPageRequest);
+        return new PageInfo<>(categories);
     }
 
     @Override
@@ -43,6 +47,7 @@ public class CategoryServer implements ICategoryService {
 
     @Override
     public void update(Category category) {
+        category.setUpdatetime(new Date());
         categoryMapper.updateById(category);
     }
 

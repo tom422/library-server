@@ -2,6 +2,7 @@ package com.example.libraryservice.controller;
 
 import com.example.libraryservice.common.Result;
 import com.example.libraryservice.controller.request.AdminPageRequest;
+import com.example.libraryservice.controller.request.CategoryPageRequest;
 import com.example.libraryservice.entity.Category;
 import com.example.libraryservice.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class CategoryController {
 
 
     @PostMapping("/save")
-    public Result save(@RequestBody Category admin){
-        categoryService.save(admin);
+    public Result save(@RequestBody Category category){
+        categoryService.save(category);
         return Result.success();
     }
 
@@ -32,9 +33,9 @@ public class CategoryController {
     }
 
     @GetMapping("/page")
-    public Result page(AdminPageRequest adminPageRequest){
-        Object users = categoryService.page(adminPageRequest);
-        return Result.success(users);
+    public Result page(CategoryPageRequest categoryPageRequest){
+        Object categorys = categoryService.page(categoryPageRequest);
+        return Result.success(categorys);
     }
 
     @GetMapping("/{id}")

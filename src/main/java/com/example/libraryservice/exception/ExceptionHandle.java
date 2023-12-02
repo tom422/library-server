@@ -23,7 +23,7 @@ public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     public Result exceptionError(Exception e){
-        log.error("系统错误", e);
+        log.error("系统错误{}", e.getMessage());
         return Result.error("系统错误");
     }
 }
