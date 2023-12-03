@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Book implements Serializable {
@@ -30,7 +31,7 @@ public class Book implements Serializable {
     /**
      * 出版日期
      */
-    private String publishData;
+    private String publishDate;
 
     /**
      * 作者
@@ -69,5 +70,6 @@ public class Book implements Serializable {
      */
     private String cover;
 
+    private List<String> categories;
 
 }
