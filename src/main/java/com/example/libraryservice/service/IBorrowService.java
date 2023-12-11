@@ -1,21 +1,21 @@
 package com.example.libraryservice.service;
 
 import com.example.libraryservice.controller.request.BaseRequest;
-import com.example.libraryservice.entity.Book;
+import com.example.libraryservice.entity.Borrow;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
 public interface IBorrowService {
-    List<Book> list();
+    List<Borrow> list();
 
-    PageInfo<Book> page(BaseRequest categoryPageRequest);
+    PageInfo<Borrow> page(BaseRequest categoryPageRequest);
 
-    void save(Book category);
+    void save(Borrow category);
 
-    Book getById(Integer id);
+    Borrow getById(Integer id);
 
-    void update(Book category);
+    void update(Borrow category);
 
     void deleteById(Integer id);
 

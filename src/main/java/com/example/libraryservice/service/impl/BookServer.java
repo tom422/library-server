@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.example.libraryservice.controller.request.BaseRequest;
 import com.example.libraryservice.controller.request.CategoryPageRequest;
 import com.example.libraryservice.entity.Book;
+import com.example.libraryservice.exception.ServiceException;
 import com.example.libraryservice.mapper.BookMapper;
 import com.example.libraryservice.mapper.CategoryMapper;
 import com.example.libraryservice.service.IBookService;
@@ -38,8 +39,13 @@ public class BookServer implements IBookService {
 
     @Override
     public void save(Book obj) {
-        obj.setCategory(setCategory(obj.getCategories()));
-        bookMapper.save(obj);
+        try {
+            obj.setCategory(setCategory(obj.getCategories()));
+            bookMapper.save(obj);
+        } catch (Exception e) {
+            throw new ServiceException("数据插入错误",e);
+        }
+
     }
 
     @Override
@@ -49,9 +55,14 @@ public class BookServer implements IBookService {
 
     @Override
     public void update(Book obj) {
-        obj.setUpdatetime(new Date());
-        obj.setCategory(setCategory(obj.getCategories()));
-        bookMapper.updateById(obj);
+        try {
+            obj.setUpdatetime(new Date());
+            obj.setCategory(setCategory(obj.getCategories()));
+            bookMapper.updateById(obj);
+        } catch (Exception e){
+            throw new ServiceException("数据更新错误",e);
+        }
+
     }
 
     @Override
@@ -64,7 +75,7 @@ public class BookServer implements IBookService {
         StringBuilder sb = new StringBuilder();
         if (CollUtil.isNotEmpty(categoryes)){
             categoryes.forEach(v-> sb.append(v).append(">"));
-            sb.substring(0, sb.lastIndexOf(">"));
+            return sb.substring(0, sb.lastIndexOf(">"));
         }
         return sb.toString();
     }

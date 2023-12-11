@@ -4,11 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.libraryservice.mapper.BorrowMapper">
     <insert id="save">
-        insert into borrow(book_name, book_no, user_id, user_name, user_phone, score)
-        values (#{bookName},#{bookNo},#{userId},#{userName},#{userPhone},#{score})
+        insert into borrow(book_name, book_no, user_no, user_name, user_phone, score, days, return_date)
+        values (#{bookName},#{bookNo},#{userNo},#{userName},#{userPhone},#{score},#{days}, #{returnDate})
     </insert>
     <update id="updateById">
-        update borrow set book_name = #{bookName}, book_no = #{bookNo},user_id = #{userId},user_name = #{userName},user_phone = #{userPhone},score = #{score} ,updatetime=#{updatetime}
+        update borrow set book_name = #{bookName},
+                          book_no = #{bookNo},
+                          user_no = #{userNo},
+                          user_name = #{userName},
+                          user_phone = #{userPhone},
+                          score = #{score},
+                          days = #{days},
+                          return_date = #{returnDate},
+                          updatetime=#{updatetime}
         where id = #{id}
     </update>
     <delete id="deleteById">

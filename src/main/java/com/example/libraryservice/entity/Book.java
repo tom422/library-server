@@ -72,4 +72,7 @@ public class Book implements Serializable {
 
     private List<String> categories;
 
+    private Integer score;
+    private Integer nums;
+
 }

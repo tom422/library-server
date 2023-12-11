@@ -14,6 +14,8 @@ public class User {
     private String sex;
     private String phone;
     private String address;
+    private Integer account;
+    private Integer score;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
     private Date createtime;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")

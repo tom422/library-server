@@ -25,9 +25,9 @@ public class Borrow   {
     private String bookNo;
 
     /**
-     * 用户id
+     * 会员码
      */
-    private Integer userId;
+    private String userNo;
 
     /**
      * 用户名称
@@ -55,6 +55,12 @@ public class Borrow   {
      * 借书积分
      */
     private Integer score;
+    private String status;
+    private Integer days;
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
+    private Date returnDate;
+    // 提醒状态 即将到期 (-1) 已到期（当天） 已过期（超过归还日期之后之后）
+    private String note;
 
 
 }
